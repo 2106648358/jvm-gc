@@ -1,0 +1,81 @@
+<svg width="800" height="500" viewBox="0 0 800 500" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@800&amp;display=swap');
+      .text { font-family: 'JetBrains Mono', monospace; }
+    </style>
+    <filter id="glow-green" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="glow-red" x="-50%" y="-50%" width="200%" height="200%">
+      <feDropShadow dx="0" dy="0" stdDeviation="5" flood-color="#ef4444" flood-opacity="0.6"/>
+    </filter>
+    <linearGradient id="bg-gradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#020617"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="500" fill="url(#bg-gradient)" rx="15"/>
+  
+  <!-- Grid Pattern -->
+  <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+    <circle cx="1" cy="1" r="1" fill="#334155" fill-opacity="0.3"/>
+  </pattern>
+  <rect width="800" height="500" fill="url(#grid)"/>
+
+  <!-- CMS Generations Split -->
+  <line x1="50" y1="220" x2="750" y2="220" stroke="#334155" stroke-width="2" stroke-dasharray="8 8"/>
+  <text x="60" y="200" fill="#3b82f6" fill-opacity="0.3" font-size="40" font-weight="900" class="text">YOUNG GEN</text>
+  <text x="60" y="450" fill="#eab308" fill-opacity="0.2" font-size="60" font-weight="900" class="text">OLD GEN</text>
+
+  <!-- Header -->
+  <rect x="0" y="0" width="800" height="60" fill="#1e293b" fill-opacity="0.8"/>
+  <text x="30" y="40" fill="#22d3ee" font-size="20" font-weight="bold" class="text">CMS: Concurrent Marking</text>
+  <circle cx="750" cy="30" r="6" fill="#22d3ee"/>
+  <circle cx="730" cy="30" r="6" fill="#f59e0b"/>
+
+  <!-- Connections -->
+  <path d="M150,120 L300,120" stroke="#10b981" stroke-width="2" opacity="0.6"/>
+  <path d="M300,120 L450,120" stroke="#10b981" stroke-width="2" opacity="0.6"/>
+  <path d="M150,350 L250,350" stroke="#64748b" stroke-width="1" opacity="0.3"/>
+
+  <!-- Objects: Roots (Young) -->
+  <g transform="translate(150, 120)">
+    <rect x="-25" y="-25" width="50" height="50" rx="12" fill="#047857" stroke="#34d399" stroke-width="3" filter="url(#glow-green)"/>
+    <text x="0" y="5" text-anchor="middle" fill="#ecfdf5" font-size="14" font-weight="bold" class="text">Root</text>
+  </g>
+
+  <!-- Objects: Live (Young) -->
+  <g transform="translate(300, 120)">
+    <rect x="-25" y="-25" width="50" height="50" rx="12" fill="#047857" stroke="#34d399" stroke-width="2" filter="url(#glow-green)"/>
+    <text x="0" y="5" text-anchor="middle" fill="#ecfdf5" font-size="14" font-weight="bold" class="text">Obj</text>
+  </g>
+
+  <!-- Objects: Garbage (Young) -->
+  <g transform="translate(450, 120)" opacity="0.6">
+    <rect x="-25" y="-25" width="50" height="50" rx="12" fill="#be123c" stroke="#fb7185" stroke-width="2" filter="url(#glow-red)"/>
+    <text x="0" y="5" text-anchor="middle" fill="#fff1f2" font-size="14" font-weight="bold" class="text">Garb</text>
+  </g>
+
+  <!-- Objects: Old Gen -->
+  <g transform="translate(150, 350)">
+    <rect x="-25" y="-25" width="50" height="50" rx="12" fill="#1e293b" stroke="#475569" stroke-width="2"/>
+    <text x="0" y="5" text-anchor="middle" fill="#94a3b8" font-size="14" font-weight="bold" class="text">Old</text>
+  </g>
+
+  <g transform="translate(250, 350)">
+    <rect x="-25" y="-25" width="50" height="50" rx="12" fill="#1e293b" stroke="#475569" stroke-width="2"/>
+    <text x="0" y="5" text-anchor="middle" fill="#94a3b8" font-size="14" font-weight="bold" class="text">Old</text>
+  </g>
+
+  <!-- Floating Label -->
+  <rect x="410" y="80" width="80" height="24" rx="4" fill="#be123c"/>
+  <text x="450" y="97" text-anchor="middle" fill="white" font-size="10" font-weight="bold" class="text">GARBAGE</text>
+
+</svg>

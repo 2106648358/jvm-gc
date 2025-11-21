@@ -1,0 +1,5 @@
+{
+  "name": "JVM GC Visualizer",
+  "description": "Interactive visualization of CMS and ZGC garbage collection algorithms with STW indicators.",
+  "requestFramePermissions": []
+}

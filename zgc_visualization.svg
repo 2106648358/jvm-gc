@@ -1,0 +1,66 @@
+<svg width="800" height="500" viewBox="0 0 800 500" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@800&amp;display=swap');
+      .text { font-family: 'JetBrains Mono', monospace; }
+    </style>
+    <filter id="glow-purple" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="8" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <linearGradient id="bg-zgc" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2e1065"/>
+      <stop offset="100%" stop-color="#020617"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="800" height="500" fill="url(#bg-zgc)" rx="15"/>
+
+  <!-- Page Grid -->
+  <g opacity="0.2">
+    <line x1="200" y1="60" x2="200" y2="460" stroke="#a78bfa" stroke-width="1"/>
+    <line x1="400" y1="60" x2="400" y2="460" stroke="#a78bfa" stroke-width="1"/>
+    <line x1="600" y1="60" x2="600" y2="460" stroke="#a78bfa" stroke-width="1"/>
+    <line x1="0" y1="160" x2="800" y2="160" stroke="#a78bfa" stroke-width="1"/>
+    <line x1="0" y1="260" x2="800" y2="260" stroke="#a78bfa" stroke-width="1"/>
+    <line x1="0" y1="360" x2="800" y2="360" stroke="#a78bfa" stroke-width="1"/>
+  </g>
+
+  <!-- Header -->
+  <rect x="0" y="0" width="800" height="60" fill="#1e293b" fill-opacity="0.8"/>
+  <text x="30" y="40" fill="#a78bfa" font-size="20" font-weight="bold" class="text">ZGC: Concurrent Relocation</text>
+
+  <!-- Colored Pointers Logic -->
+  <g transform="translate(200, 210)">
+    <!-- Pointer Line -->
+    <line x1="50" y1="0" x2="150" y2="0" stroke="#d8b4fe" stroke-width="4"/>
+    <circle cx="100" cy="0" r="6" fill="#c084fc"/> <!-- The Color Pointer indicator -->
+    <text x="100" y="-15" text-anchor="middle" fill="#d8b4fe" font-size="10" class="text">Color Pointer</text>
+  </g>
+
+  <!-- Object: Relocated -->
+  <g transform="translate(100, 210)">
+    <rect x="-30" y="-30" width="60" height="60" rx="14" fill="#6d28d9" stroke="#a78bfa" stroke-width="3" filter="url(#glow-purple)"/>
+    <text x="0" y="5" text-anchor="middle" fill="#f3e8ff" font-size="16" font-weight="bold" class="text">Obj A</text>
+    <!-- Bad Color Badge -->
+    <circle cx="25" cy="-25" r="8" fill="#fbbf24"/>
+  </g>
+
+  <!-- Object: Target (Re-mapped) -->
+  <g transform="translate(450, 210)">
+    <rect x="-30" y="-30" width="60" height="60" rx="14" fill="#4c1d95" stroke="#8b5cf6" stroke-width="2" opacity="0.6"/>
+    <text x="0" y="5" text-anchor="middle" fill="#ddd6fe" font-size="16" font-weight="bold" class="text">Obj B</text>
+  </g>
+
+  <!-- Info Box -->
+  <g transform="translate(580, 380)">
+    <rect x="0" y="0" width="200" height="100" rx="8" fill="#1e293b" stroke="#334155"/>
+    <text x="20" y="30" fill="#94a3b8" font-size="12" class="text">Load Barrier: ACTIVE</text>
+    <text x="20" y="50" fill="#94a3b8" font-size="12" class="text">Remap Set: [Page 1]</text>
+    <text x="20" y="70" fill="#a78bfa" font-size="12" font-weight="bold" class="text">Latency: &lt;1ms</text>
+  </g>
+
+</svg>
